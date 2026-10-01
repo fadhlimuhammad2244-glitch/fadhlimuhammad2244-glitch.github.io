@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Fadhli Izyanulhakim - Portofolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Public Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        bg: '#E5E5E5', // Abu-abu terang netral
+                        card: '#FAFAFA', // Putih tulang
+                        primary: '#FF4545', // Merah tegas
+                        secondary: '#4353FF', // Biru terang
+                        accent: '#FFD23F', // Kuning hangat
+                        dark: '#111111',
+                    },
+                    boxShadow: {
+                        'brutal': '4px 4px 0px 0px rgba(17,17,17,1)',
+                        'brutal-lg': '8px 8px 0px 0px rgba(17,17,17,1)',
+                        'brutal-hover': '2px 2px 0px 0px rgba(17,17,17,1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #E5E5E5;
+            /* Pola titik yang lebih halus */
+            background-image: radial-gradient(#d1d1d1 2px, transparent 2px);
+            background-size: 32px 32px;
+            color: #111;
+        }
+
+        .brutal-border {
+            border: 3px solid #111;
+        }
+
+        .brutal-box {
+            background-color: #FAFAFA;
+            border: 3px solid #111;
+            box-shadow: 4px 4px 0px 0px rgba(17,17,17,1);
+            transition: all 0.2s ease;
+        }
+
+        .brutal-button {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .brutal-button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px rgba(17,17,17,1);
+        }
+
+        .brutal-button:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px rgba(17,17,17,1);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+            width: max-content;
+        }
+
+        /* Scrollbar lebih bersih */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #E5E5E5; border-left: 2px solid #111; }
+        ::-webkit-scrollbar-thumb { background: #FFD23F; border-left: 2px solid #111; border-bottom: 2px solid #111;}
+        
+        /* Modal Animation */
+        .modal-enter { opacity: 0; transform: scale(0.9); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .modal-exit { opacity: 1; transform: scale(1); }
+        .modal-exit-active { opacity: 0; transform: scale(0.9); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden min-h-screen selection:bg-accent selection:text-dark">
+
+    <nav class="fixed w-full z-40 top-0 px-4 py-4 pointer-events-none">
+        <div class="max-w-6xl mx-auto flex justify-between items-center pointer-events-auto">
+            <a href="#" class="bg-card brutal-border px-5 py-2 text-xl font-display font-bold shadow-brutal brutal-button flex items-center gap-2 rounded-lg">
+                <div class="w-4 h-4 bg-primary rounded-full brutal-border"></div>
+                Fadhli.
+            </a>
+            <div class="hidden md:flex gap-3">
+                <a href="#profil" class="bg-card brutal-border px-5 py-2 font-bold shadow-brutal brutal-button hover:bg-accent rounded-lg">Profil</a>
+                <a href="#kemampuan" class="bg-card brutal-border px-5 py-2 font-bold shadow-brutal brutal-button hover:bg-accent rounded-lg">Skills</a>
+                <a href="#pengalaman" class="bg-card brutal-border px-5 py-2 font-bold shadow-brutal brutal-button hover:bg-accent rounded-lg">Pengalaman</a>
+                <a href="#kontak" class="bg-dark text-white brutal-border px-6 py-2 font-bold shadow-brutal brutal-button hover:bg-secondary rounded-lg">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20 px-4 md:px-8 max-w-6xl mx-auto">
+
+        <header class="flex flex-col lg:flex-row gap-16 items-center my-16 md:my-24">
+            
+            <!-- Teks Hero -->
+            <div class="flex-1 order-2 lg:order-1 relative z-10 w-full">
+                <!-- Badge ketersediaan -->
+                <div class="inline-flex items-center gap-2 bg-white brutal-border px-4 py-2 text-sm font-bold shadow-brutal mb-8 rounded-full">
+                    <span class="w-3 h-3 bg-green-400 brutal-border rounded-full animate-pulse"></span>
+                    Tersedia untuk Proyek
+                </div>
+                
+                <!-- Nama dengan susunan blok yang lebih rapi -->
+                <div class="flex flex-col items-start gap-3 mb-6 font-display group cursor-default">
+                    <h1 class="text-3xl md:text-4xl font-bold bg-white text-dark px-4 py-1 brutal-border transform transition-transform group-hover:-translate-y-1">Muhammad</h1>
+                    <h1 class="text-6xl md:text-8xl font-black bg-accent text-dark px-6 py-2 brutal-border shadow-brutal-lg z-10 transform transition-transform group-hover:scale-105">Fadhli</h1>
+                    <h1 class="text-3xl md:text-4xl font-bold bg-pink-300 text-dark px-4 py-1 brutal-border transform transition-transform group-hover:translate-y-1">Izyanulhakim</h1>
+                </div>
+                
+                <!-- Peran -->
+                <div class="flex items-center gap-4 mb-10 mt-6">
+                    <span class="text-xl md:text-2xl font-bold font-display px-4 py-2 bg-secondary text-white brutal-border shadow-brutal rounded-lg">
+                        Desainer Grafis
+                    </span>
+                    <i class="fa-solid fa-asterisk text-3xl text-primary animate-spin-slow" style="animation-duration: 4s;"></i>
+                </div>
+                
+                <!-- Tombol Aksi -->
+                <div class="flex flex-wrap gap-4">
+                    <a href="#kontak" class="bg-primary text-white brutal-border px-8 py-4 text-lg font-bold shadow-brutal brutal-button flex items-center gap-2 rounded-lg">
+                        Mari Diskusi <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/fadhli-design/" target="_blank" class="bg-white text-dark brutal-border px-6 py-4 text-lg font-bold shadow-brutal brutal-button flex items-center gap-2 rounded-lg hover:bg-blue-50">
+                        <i class="fa-brands fa-linkedin text-secondary text-xl"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Foto Hero -->
+            <div class="flex-1 order-1 lg:order-2 w-full max-w-md relative mx-auto">
+                <div class="absolute inset-0 bg-secondary brutal-border shadow-brutal translate-x-4 translate-y-4 rounded-xl"></div>
+                <div class="relative bg-card brutal-border p-3 shadow-brutal z-10 rounded-xl">
+                   <img src="image/fadhli.jpg" alt="Muhammad Fadhli" class="w-full aspect-square object-cover brutal-border rounded-lg grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute -bottom-5 -left-5 bg-accent brutal-border px-4 py-2 font-bold shadow-brutal rotate-[-3deg] rounded-md font-display">
+                        Kreatif & Teliti
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-white text-dark brutal-border border-l-0 border-r-0 py-3 mb-24 overflow-hidden shadow-brutal">
+            <div class="animate-marquee flex gap-8 text-xl font-bold uppercase tracking-widest whitespace-nowrap font-display">
+                <span>
+                    Desain Grafis <i class="fa-solid fa-bahai text-accent mx-4"></i>
+                    Tipografi <i class="fa-solid fa-bahai text-primary mx-4"></i>
+                    Tata Letak <i class="fa-solid fa-bahai text-secondary mx-4"></i>
+                    Konsep Kreatif <i class="fa-solid fa-bahai text-accent mx-4"></i>
+                    Kerja Sama Tim <i class="fa-solid fa-bahai text-primary mx-4"></i>
+                </span>
+                <span>
+                    Desain Grafis <i class="fa-solid fa-bahai text-accent mx-4"></i>
+                    Tipografi <i class="fa-solid fa-bahai text-primary mx-4"></i>
+                    Tata Letak <i class="fa-solid fa-bahai text-secondary mx-4"></i>
+                    Konsep Kreatif <i class="fa-solid fa-bahai text-accent mx-4"></i>
+                    Kerja Sama Tim <i class="fa-solid fa-bahai text-primary mx-4"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24">
+            
+            <section id="profil" class="lg:col-span-7">
+                <div class="brutal-box p-8 md:p-10 h-full rounded-xl relative overflow-hidden bg-white">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-accent brutal-border rounded-full opacity-30"></div>
+                    
+                    <h2 class="text-3xl font-display font-black mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-primary brutal-border inline-block rounded"></span>
+                        Profil Saya
+                    </h2>
+                    
+                    <div class="space-y-4 text-lg text-gray-800 leading-relaxed font-medium">
+                        <p>
+                            Desainer Grafis yang kreatif dan teliti dengan pengalaman langsung dalam komunikasi visual dan media digital. Terampil dalam membuat poster, konten media sosial, dan visual webinar.
+                        </p>
+                        <p class="bg-bg p-5 brutal-border rounded-lg border-dashed">
+                            Memiliki kemampuan kuat untuk mengubah ide menjadi desain yang berdampak dengan tetap menjaga konsistensi brand. Antusias dalam mempelajari tools desain baru serta berkontribusi dalam proyek berbasis tim.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="kemampuan" class="lg:col-span-5 flex flex-col gap-6">
+                
+                <!-- Tools Card -->
+                <div class="brutal-box p-6 rounded-xl bg-accent">
+                    <div class="flex justify-between items-center mb-4 border-b-2 border-dark pb-2">
+                        <h3 class="text-xl font-display font-black">Software / Tools</h3>
+                        <span class="text-xs font-bold bg-white px-2 py-1 brutal-border rounded-full animate-bounce"><i class="fa-solid fa-hand-pointer"></i> Klik Logo!</span>
+                    </div>
+                    
+                    <!-- Tombol-tombol Tool interaktif dengan Ikon Baru -->
+                    <div class="grid grid-cols-2 gap-3 font-bold">
+                        <button onclick="openModal('photoshop')" class="w-full text-left bg-white brutal-border p-3 flex items-center gap-2 hover:bg-blue-50 transition-all brutal-button rounded-lg">
+                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/adobe-photoshop-icon.svg" alt="Photoshop" class="w-6 h-6 object-contain"> Photoshop
+                        </button>
+                        <button onclick="openModal('illustrator')" class="w-full text-left bg-white brutal-border p-3 flex items-center gap-2 hover:bg-orange-50 transition-all brutal-button rounded-lg">
+                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/adobe-illustrator-icon.svg" alt="Illustrator" class="w-6 h-6 object-contain"> Illustrator
+                        </button>
+                        <button onclick="openModal('canva')" class="w-full text-left bg-white brutal-border p-3 flex items-center gap-2 hover:bg-cyan-50 transition-all brutal-button rounded-lg">
+                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/canva-icon.svg" alt="Canva" class="w-6 h-6 object-contain"> Canva
+                        </button>
+                        <button onclick="openModal('figma')" class="w-full text-left bg-white brutal-border p-3 flex flex-col items-start gap-1 hover:bg-pink-50 transition-all brutal-button rounded-lg">
+                            <span class="flex items-center gap-2">
+                                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/figma-icon.svg" alt="Figma" class="w-4 h-6 object-contain"> Figma
+                            </span>
+                            <span class="text-[10px] bg-accent px-1 border border-dark rounded">Dasar UI/UX</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Keahlian Card -->
+                <div class="brutal-box p-6 rounded-xl bg-dark text-white">
+                    <h3 class="text-xl font-display font-black mb-4 border-b-2 border-gray-600 pb-2">Keahlian</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-card text-dark brutal-border px-3 py-1.5 font-bold text-sm rounded-md">Desain Grafis</span>
+                        <span class="bg-card text-dark brutal-border px-3 py-1.5 font-bold text-sm rounded-md">Tipografi & Tata Letak</span>
+                        <span class="bg-primary text-white brutal-border px-3 py-1.5 font-bold text-sm rounded-md">Konsep Kreatif</span>
+                        <span class="bg-secondary text-white brutal-border px-3 py-1.5 font-bold text-sm rounded-md">Kerja Sama Tim</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="pengalaman" class="mb-24">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-4xl md:text-5xl font-display font-black bg-white px-4 py-2 brutal-border inline-block rounded-lg shadow-brutal">Pengalaman Kerja</h2>
+                <div class="h-1 flex-1 bg-dark opacity-20"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- Pengalaman 1 -->
+                <div class="brutal-box p-6 md:p-8 rounded-xl flex flex-col h-full bg-white transition-transform duration-300 hover:shadow-brutal-lg">
+                    <div class="w-12 h-12 bg-accent brutal-border rounded-lg flex items-center justify-center font-black text-xl mb-6 shadow-brutal">1</div>
+                    <h3 class="text-2xl font-display font-black mb-4">Desain Grafis</h3>
+                    <ul class="space-y-3 font-medium text-gray-700 flex-1">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-play text-primary text-xs mt-1.5"></i>
+                            <span>Mendesain poster digital untuk webinar perusahaan di <strong class="text-dark bg-yellow-100 px-1 rounded border border-dark">PT Mitra Global Informatika</strong>.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-play text-primary text-xs mt-1.5"></i>
+                            <span>Membuat konten visual untuk acara sekolah dan kampanye media sosial.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-play text-primary text-xs mt-1.5"></i>
+                            <span>Berpartisipasi dalam pameran desain kelas yang menampilkan karya poster dan branding.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pengalaman 2 -->
+                <div class="brutal-box p-6 md:p-8 rounded-xl flex flex-col h-full bg-white transition-transform duration-300 hover:shadow-brutal-lg">
+                    <div class="w-12 h-12 bg-secondary text-white brutal-border rounded-lg flex items-center justify-center font-black text-xl mb-6 shadow-brutal">2</div>
+                    <h3 class="text-2xl font-display font-black mb-4">Motion Graphic & Graphic Designer</h3>
+                    <div class="space-y-4 font-medium text-gray-700 flex-1">
+                        <div class="bg-bg p-3 brutal-border rounded-md border-dashed">
+                            <span class="font-bold text-dark block mb-1">Produksi Konten Visual & Video:</span>
+                            <p class="text-sm">Merancang dan mengeksekusi aset visual kreatif, termasuk editing video highlight dan motion graphics untuk promosi event.</p>
+                        </div>
+                        <div class="bg-bg p-3 brutal-border rounded-md border-dashed">
+                            <span class="font-bold text-dark block mb-1">Eksplorasi Kreatif:</span>
+                            <p class="text-sm">Riset tren visual dan optimasi elemen grafis (layout, tipografi, warna) untuk memastikan aset digital memiliki engagement tinggi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pengalaman 3 -->
+                <div class="brutal-box p-6 md:p-8 rounded-xl flex flex-col h-full bg-dark text-white transition-transform duration-300 hover:shadow-brutal-lg">
+                    <div class="w-12 h-12 bg-primary text-white brutal-border rounded-lg flex items-center justify-center font-black text-xl mb-6 shadow-brutal">3</div>
+                    <h3 class="text-2xl font-display font-black mb-6 text-accent">Social Media & Content</h3>
+                    <div class="space-y-4 font-medium flex-1">
+                        <div class="flex items-center gap-4 bg-white/10 p-3 brutal-border border-white rounded-lg">
+                            <div class="text-2xl flex gap-2">
+                                <i class="fa-brands fa-instagram text-pink-400"></i>
+                                <i class="fa-brands fa-tiktok text-white"></i>
+                            </div>
+                            <span class="text-sm">Mengelola konten Instagram / TikTok</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/10 p-3 brutal-border border-white rounded-lg">
+                            <i class="fa-solid fa-pen-nib text-2xl text-accent w-8 text-center"></i>
+                            <span class="text-sm">Menulis caption & strategi engagement</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/10 p-3 brutal-border border-white rounded-lg">
+                            <i class="fa-regular fa-calendar-check text-2xl text-green-400 w-8 text-center"></i>
+                            <span class="text-sm">Menjadwalkan posting konten</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Pendidikan -->
+            <section class="brutal-box p-8 md:p-10 rounded-xl flex flex-col justify-center bg-secondary relative overflow-hidden text-white">
+                <i class="fa-solid fa-graduation-cap absolute -right-10 -bottom-10 text-9xl opacity-20 text-dark"></i>
+                
+                <h2 class="text-2xl font-display font-black mb-6 uppercase tracking-wider text-accent border-b-2 border-white/30 pb-2 inline-block">Pendidikan</h2>
+                <div class="bg-white text-dark brutal-border p-6 shadow-brutal relative z-10 rounded-lg">
+                    <h3 class="text-3xl font-display font-black mb-2">SMK Wikrama Bogor</h3>
+                    <p class="font-bold text-lg mb-4 text-secondary">Jurusan: Desain Komunikasi Visual (DKV)</p>
+                    <div class="inline-flex items-center gap-2 bg-accent text-dark px-3 py-1 font-bold rounded-md brutal-border text-sm">
+                        <i class="fa-regular fa-clock"></i> Tahun: 2023 - 2026
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kontak -->
+            <section id="kontak" class="brutal-box p-8 md:p-10 rounded-xl bg-white border-primary border-4 shadow-[8px_8px_0px_0px_#FF4545]">
+                <h2 class="text-3xl font-display font-black mb-4">Mari Berkolaborasi!</h2>
+                <p class="mb-8 font-medium text-gray-600">Tertarik untuk bekerja sama atau ada pertanyaan seputar proyek desain? Hubungi saya.</p>
+                
+                <div class="space-y-4">
+                    <a href="https://wa.me/6285771177683" target="_blank" class="flex items-center gap-4 bg-bg brutal-border p-3 font-bold shadow-brutal brutal-button rounded-lg hover:bg-green-100 transition-colors">
+                        <div class="w-12 h-12 bg-green-400 brutal-border rounded-lg flex items-center justify-center text-dark text-xl shrink-0">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <span class="text-lg">+62 857-7117-7683</span>
+                    </a>
+                    
+                    <a href="mailto:fadhlimuhammad.2244@gmail.com" class="flex items-center gap-4 bg-bg brutal-border p-3 font-bold shadow-brutal brutal-button rounded-lg hover:bg-blue-100 transition-colors overflow-hidden">
+                        <div class="w-12 h-12 bg-primary brutal-border rounded-lg flex items-center justify-center text-white text-xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <span class="text-lg truncate">fadhlimuhammad.2244@gmail.com</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="bg-dark text-white brutal-border border-b-0 border-l-0 border-r-0 py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <div>
+                <p class="text-xl font-display font-black tracking-wide mb-1">Muhammad Fadhli Izyanulhakim</p>
+                <p class="text-sm text-gray-400 font-medium">Desainer Grafis &middot; Portofolio Pribadi</p>
+            </div>
+            
+            <div class="flex gap-3">
+                <a href="https://www.linkedin.com/in/fadhli-design/" target="_blank" class="w-12 h-12 flex items-center justify-center bg-white text-dark brutal-border shadow-brutal brutal-button rounded-lg hover:bg-secondary hover:text-white">
+                    <i class="fa-brands fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="mailto:fadhlimuhammad.2244@gmail.com" class="w-12 h-12 flex items-center justify-center bg-white text-dark brutal-border shadow-brutal brutal-button rounded-lg hover:bg-primary hover:text-white">
+                    <i class="fa-solid fa-envelope text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="portfolioModal" class="hidden fixed inset-0 z-[100] bg-dark/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <!-- Overlay untuk klik luar tutup modal -->
+        <div class="absolute inset-0 cursor-pointer" onclick="closeModal()"></div>
+        
+        <!-- Kontainer Modal -->
+        <div id="modalContainer" class="bg-bg brutal-border border-4 shadow-[12px_12px_0px_0px_#111] w-full max-w-4xl max-h-[90vh] flex flex-col rounded-xl relative z-10 modal-enter">
+            
+            <!-- Header Modal -->
+            <div class="bg-white border-b-4 border-dark p-4 flex justify-between items-center rounded-t-lg">
+                <h3 id="modalTitle" class="text-2xl font-display font-black flex items-center gap-3">
+                    <!-- Ikon & Judul disisipkan JS -->
+                </h3>
+                <button onclick="closeModal()" class="w-10 h-10 bg-primary text-white brutal-border font-bold text-xl hover:bg-dark transition-colors flex items-center justify-center rounded-lg shadow-brutal brutal-button shrink-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <!-- Body Modal (Bisa di-scroll) -->
+            <div class="p-6 overflow-y-auto flex-1 bg-card rounded-b-lg">
+                <p class="mb-6 font-medium text-gray-600 bg-accent/20 p-3 brutal-border rounded-lg text-sm border-dashed">
+                    <i class="fa-solid fa-circle-info text-accent mr-2"></i> Berikut adalah beberapa contoh karya yang dibuat menggunakan perangkat lunak ini.
+                </p>
+                
+                <div id="modalGallery" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Item Karya disisipkan JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Karya (*Mockup/Placeholder*) berdasarkan Software
+        const portfolioData = {
+            'photoshop': {
+    title: '<img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/adobe-photoshop-icon.svg" class="w-8 h-8 inline-block mr-2"> Karya Adobe Photoshop',
+    color: '#2563eb',
+    items: [
+        { img: 'image/poster webinar.png', title: 'Poster Webinar Digital', desc: 'Desain layout dan manipulasi visual' },
+        { img: 'image/pencahayaan.png', title: 'Photo Retouching', desc: 'Editing warna dan pencahayaan' },
+        { img: 'image/carousel feed.png', title: 'Feed Instagram Promo', desc: 'Konten media sosial produk' }
+    ]
+            },
+            'illustrator': {
+                title: '<img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/adobe-illustrator-icon.svg" class="w-8 h-8 inline-block mr-2"> Karya Adobe Illustrator',
+                color: '#ea580c', // Orange
+                items: [
+                    { img: 'image/logo.png', title: 'Desain Identitas Logo', desc: 'Pembuatan logo berbasis vektor' },
+                    { img: 'image/Karakter.jpg', title: 'Ilustrasi Karakter 2D', desc: 'Aset visual untuk event sekolah' },
+                    { img: 'image/font.png', title: 'Eksplorasi Tipografi', desc: 'Desain font kustom' }
+                ]
+            },
+            'canva': {
+                title: '<img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/canva-icon.svg" class="w-8 h-8 inline-block mr-2"> Karya Canva',
+                color: '#06b6d4', // Cyan
+                items: [
+                    { img: 'image/instagram.png', title: 'Template Instagram Story', desc: 'Desain harian yang interaktif' },
+                    { img: 'image/perusahaan.png', title: 'Slide Presentasi Bisnis', desc: 'Pitch deck perusahaan' }
+                ]
+            },
+            'figma': {
+                title: '<img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/figma-icon.svg" class="w-8 h-8 inline-block mr-2"> Karya Figma',
+                color: '#ec4899', // Pink
+                items: [
+                    { img: 'image/web figma.png', title: 'Desain UI Mobile App', desc: 'Wireframe dan hi-fi mockup' },
+                    { img: 'image/halaman web.png', title: 'Landing Page Website', desc: 'Desain tata letak halaman web' }
+                ]
+            }
+        };
+
+        const modal = document.getElementById('portfolioModal');
+        const modalContainer = document.getElementById('modalContainer');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalGallery = document.getElementById('modalGallery');
+
+        // Fungsi Membuka Modal
+        function openModal(toolKey) {
+            const data = portfolioData[toolKey];
+            if (!data) return;
+
+            // Set Judul
+            modalTitle.innerHTML = data.title;
+
+            // Bersihkan galeri sebelumnya
+            modalGallery.innerHTML = '';
+
+            // Masukkan gambar baru
+            data.items.forEach(item => {
+                const cardHTML = `
+                    <div class="bg-white brutal-border p-3 rounded-xl shadow-brutal flex flex-col group overflow-hidden">
+                        <div class="overflow-hidden border-2 border-dark rounded-lg mb-3 bg-gray-100 relative">
+                            <img src="${item.img}" alt="${item.title}" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h4 class="font-display font-bold text-lg mb-1 truncate" style="color: ${data.color}">${item.title}</h4>
+                        <p class="text-sm font-medium text-gray-600 line-clamp-2">${item.desc}</p>
+                    </div>
+                `;
+                modalGallery.insertAdjacentHTML('beforeend', cardHTML);
+            });
+
+            // Tampilkan Modal dengan animasi
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Kunci scroll halaman belakang
+            
+            // Trigger reflow untuk animasi
+            void modalContainer.offsetWidth; 
+            modalContainer.classList.add('modal-enter-active');
+            modalContainer.classList.remove('modal-enter');
+        }
+
+        // Fungsi Menutup Modal
+        function closeModal() {
+            // Animasi keluar
+            modalContainer.classList.add('modal-exit-active');
+            modalContainer.classList.remove('modal-enter-active');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Kembalikan scroll
+                
+                // Reset class animasi
+                modalContainer.classList.remove('modal-exit-active');
+                modalContainer.classList.add('modal-enter');
+            }, 300); // Sesuaikan dengan durasi transisi CSS
+        }
+
+        // Tutup modal jika tombol Escape ditekan
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
